@@ -31,7 +31,7 @@ $ kubectl get service sample --watch
 # Then using web browser access external IP for the sevice
 ```
 
-## Storage Class
+### Storage Class on AKS
 AKS는 Azure Disk를 이용하기 위한 두개의 storage class를 기본으로 제공 
 
 $ kubectl get sc
@@ -48,7 +48,11 @@ Azure Disk CSI plugin을 사용하는 방법은
 1) [AzureDisk CSI driver (CRDs 및 DaemonSet 등) 설치](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/install-azuredisk-csi-driver.md)
 2) [Basic usage](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/e2e_usage.md)
 
-
+Windows container의 경우 제약 사항 
+ - "Privilieged" container를 구동할 수 없음 (DaemonSet). CSI plugin을 구동할 수 없음
+ - Privileged Proxy 프로세스를 host에서 구동하여 지원. Container는 Named pipe를 통해 Provileged proxy에 Storage 기능을 요청.
+ 
+ 
 
 
 
